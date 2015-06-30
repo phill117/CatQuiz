@@ -14,6 +14,16 @@
 
 @implementation DetailViewController
 
+@synthesize answer1lbl;
+@synthesize answer2lbl;
+@synthesize answer3lbl;
+@synthesize answer4lbl;
+
+@synthesize answer1txt;
+@synthesize answer2txt;
+@synthesize answer3txt;
+@synthesize answer4txt;
+
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem {
@@ -28,14 +38,19 @@
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+//        self.detailDescriptionLabel.text = [self.detailItem description];
     }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.answer1lbl.text = self.answer1txt;
+    self.answer2lbl.text = self.answer2txt;
+    self.answer3lbl.text = self.answer3txt;
+    self.answer4lbl.text = self.answer4txt;
     // Do any additional setup after loading the view, typically from a nib.
-    [self configureView];
+//    [self configureView];
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -14,6 +14,11 @@
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
+@property (strong, nonatomic) NSString* answer1text;
+@property (strong, nonatomic) NSString* answer2text;
+@property (strong, nonatomic) NSString* answer3text;
+@property (strong, nonatomic) NSString* answer4text;
+
 
 @end
 

@@ -8,6 +8,7 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "API.h"
 
 @interface MasterViewController ()
 
@@ -27,10 +28,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    /** ADD BAR BUTTON ITEMS
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+     **/
+    
+    if (!self.objects) {
+        self.objects = [[NSMutableArray alloc] init];
+    }
+    
+    [self.objects insertObject:@"Random" atIndex:0];
+    
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
@@ -52,9 +62,16 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
+        
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSDate *object = self.objects[indexPath.row];
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
+        
+        controller.answer1txt = self.answer1text;
+        controller.answer2txt = self.answer2text;
+        controller.answer3txt = self.answer3text;
+        controller.answer4txt = self.answer4text;
+        
         [controller setDetailItem:object];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
         controller.navigationItem.leftItemsSupplementBackButton = YES;
@@ -79,9 +96,13 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [API getRandomQuestion:self];
+}
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
