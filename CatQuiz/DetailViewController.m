@@ -57,6 +57,8 @@ int ansChoice = -1;
         //pop back?
     }else{
         NSLog(@"wrong");
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Incorrect" message:@"The correct answer was..." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
     }
     
 }
