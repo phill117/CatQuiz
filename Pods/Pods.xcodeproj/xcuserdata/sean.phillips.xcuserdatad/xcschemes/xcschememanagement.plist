@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-NUI.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-NUIParse.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Unirest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>13E6085A07EC623795FB20B5</key>
+		<key>233E61954C7EE32BA51F3539</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2A9589744751C87522DFB4DF</key>
+		<key>3354373C1EA5FC08A4AF33CF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6AE54BB2CE5F0AAD5ACE09E6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D9182EA9E7DEA87BE5561418</key>
 		<dict>
 			<key>primary</key>
 			<true/>

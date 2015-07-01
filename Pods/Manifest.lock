@@ -1,10 +1,16 @@
 PODS:
+  - NUI (0.5.5):
+    - NUIParse
+  - NUIParse (1.2.1)
   - Unirest (1.1.4)
 
 DEPENDENCIES:
+  - NUI (~> 0.5.5)
   - Unirest (~> 1.1.4)
 
 SPEC CHECKSUMS:
+  NUI: 53de7278003235deb2a375fe6f04c7a3aa3e49eb
+  NUIParse: 9b6d5a6b782dc654ac6c846d623885080306f07f
   Unirest: 5e4d93eaf32463bf619a4ecd3bbc8c32acf21eac
 
 COCOAPODS: 0.37.2
