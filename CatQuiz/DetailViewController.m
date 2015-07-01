@@ -14,15 +14,7 @@
 
 @implementation DetailViewController
 
-@synthesize answer1lbl;
-@synthesize answer2lbl;
-@synthesize answer3lbl;
-@synthesize answer4lbl;
-
-@synthesize answer1txt;
-@synthesize answer2txt;
-@synthesize answer3txt;
-@synthesize answer4txt;
+int ansChoice = -1;
 
 #pragma mark - Managing the detail item
 
@@ -42,8 +34,45 @@
     }
 }
 
+- (IBAction)toggle:(id)sender {
+    [self.submitBtn setEnabled:true];
+    for(int i = 0; i < self.switchCollection.count; i++){
+        UISwitch* s = [self.switchCollection objectAtIndex:i];
+        if (![s isEqual:sender]) {
+            [s setOn:NO animated:YES];
+        }else{
+            if([s isOn]) ansChoice = i + 1;
+            else{
+                ansChoice = -1;
+                [self.submitBtn setEnabled:NO];
+            }
+        }
+    }
+}
+
+- (IBAction)submitAnswer:(id)sender {
+    if(ansChoice == self.correctAns){
+        NSLog(@"correct answer");
+        //display cat
+        //pop back?
+    }else{
+        NSLog(@"wrong");
+    }
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSError* err = nil;
+    
+    self.questionlbl.attributedText =
+        [[NSAttributedString alloc]
+         initWithData: [self.questiontxt dataUsingEncoding:NSUTF8StringEncoding]
+         options: @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType }
+         documentAttributes: nil
+         error: &err];
+    
     self.answer1lbl.text = self.answer1txt;
     self.answer2lbl.text = self.answer2txt;
     self.answer3lbl.text = self.answer3txt;

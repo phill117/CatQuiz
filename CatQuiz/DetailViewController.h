@@ -12,12 +12,17 @@
 
 @property (strong, nonatomic) id detailItem;
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (nonatomic, retain) IBOutletCollection(UISwitch) NSArray* switchCollection;
+
+@property (strong, nonatomic) IBOutlet UILabel *questionlbl;
 @property (strong, nonatomic) IBOutlet UILabel *answer1lbl;
 @property (strong, nonatomic) IBOutlet UILabel *answer2lbl;
 @property (strong, nonatomic) IBOutlet UILabel *answer3lbl;
 @property (strong, nonatomic) IBOutlet UILabel *answer4lbl;
+@property (strong, nonatomic) IBOutlet UIButton *submitBtn;
 
+@property (nonatomic, assign) int correctAns;
+@property (strong, nonatomic) NSString* questiontxt;
 @property (strong, nonatomic) NSString* answer1txt;
 @property (strong, nonatomic) NSString* answer2txt;
 @property (strong, nonatomic) NSString* answer3txt;

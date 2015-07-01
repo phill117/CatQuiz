@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
+@property (nonatomic, assign) int correctAns;
+@property (strong, nonatomic) NSString* questiontext;
 @property (strong, nonatomic) NSString* answer1text;
 @property (strong, nonatomic) NSString* answer2text;
 @property (strong, nonatomic) NSString* answer3text;

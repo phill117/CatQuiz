@@ -30,14 +30,18 @@
         NSLog(@"%@",body.JSONObject);
         NSDictionary* dic = body.JSONObject;
         
-        viewController.answer1text = [dic valueForKey:@"q_options_1"];
-        viewController.answer2text = [dic valueForKey:@"q_options_2"];
-        viewController.answer3text = [dic valueForKey:@"q_options_3"];
-        viewController.answer4text = [dic valueForKey:@"q_options_4"];
+        viewController.correctAns = [[dic valueForKey:@"q_correct_option"] intValue];
+        viewController.questiontext = [dic valueForKey:@"q_text"];
+        viewController.answer1text = [self trim:[dic valueForKey:@"q_options_1"]];
+        viewController.answer2text = [self trim:[dic valueForKey:@"q_options_2"]];
+        viewController.answer3text = [self trim:[dic valueForKey:@"q_options_3"]];
+        viewController.answer4text = [self trim:[dic valueForKey:@"q_options_4"]];
         
+        NSLog(@"Here?1");
         [spinner removeFromSuperview];
         [spinner stopAnimating];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        NSLog(@"Here?2");
         
         [viewController performSegueWithIdentifier:@"showDetail" sender:nil];
     }];
@@ -59,6 +63,10 @@
     }];
 
     
+}
+
++(NSString*)trim:(NSString*)string{
+    return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 @end

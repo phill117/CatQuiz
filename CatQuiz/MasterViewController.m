@@ -67,10 +67,13 @@
         NSDate *object = self.objects[indexPath.row];
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
         
+        controller.correctAns = self.correctAns;
         controller.answer1txt = self.answer1text;
         controller.answer2txt = self.answer2text;
         controller.answer3txt = self.answer3text;
         controller.answer4txt = self.answer4text;
+        controller.questiontxt = self.questiontext;
+        
         
         [controller setDetailItem:object];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
