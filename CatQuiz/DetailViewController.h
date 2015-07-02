@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NUIRenderer.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) id detailItem;
 
 @property (nonatomic, retain) IBOutletCollection(UISwitch) NSArray* switchCollection;
+
+@property (nonatomic, retain)
+IBOutletCollection(UILabel) NSArray* labelCollection;
 
 @property (strong, nonatomic) IBOutlet UILabel *questionlbl;
 @property (strong, nonatomic) IBOutlet UILabel *answer1lbl;
@@ -27,6 +31,8 @@
 @property (strong, nonatomic) NSString* answer2txt;
 @property (strong, nonatomic) NSString* answer3txt;
 @property (strong, nonatomic) NSString* answer4txt;
+
+@property (strong, nonatomic) UIImage* catImage;
 
 @end
 

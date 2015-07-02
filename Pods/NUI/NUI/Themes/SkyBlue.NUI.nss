@@ -12,7 +12,7 @@
 @primaryBorderWidth: 1;
 
 BarButton {
-    background-color-top: #11ABE1;
+
     background-color-bottom: #01A0DA;
     border-color: #0099D5;
     border-width: 1;

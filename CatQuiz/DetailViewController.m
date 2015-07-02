@@ -7,6 +7,9 @@
 //
 
 #import "DetailViewController.h"
+#import "NSString_stripHtml.h"
+#import "PrizeViewController.h"
+#import "API.h"
 
 @interface DetailViewController ()
 
@@ -15,24 +18,6 @@
 @implementation DetailViewController
 
 int ansChoice = -1;
-
-#pragma mark - Managing the detail item
-
-- (void)setDetailItem:(id)newDetailItem {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
-            
-        // Update the view.
-        [self configureView];
-    }
-}
-
-- (void)configureView {
-    // Update the user interface for the detail item.
-    if (self.detailItem) {
-//        self.detailDescriptionLabel.text = [self.detailItem description];
-    }
-}
 
 - (IBAction)toggle:(id)sender {
     [self.submitBtn setEnabled:true];
@@ -52,12 +37,18 @@ int ansChoice = -1;
 
 - (IBAction)submitAnswer:(id)sender {
     if(ansChoice == self.correctAns){
-        NSLog(@"correct answer");
-        //display cat
-        //pop back?
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+            while(self.catImage == nil){}; // wait
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                [self performSegueWithIdentifier:@"showKitten" sender:nil];
+            });
+        });
+        
     }else{
-        NSLog(@"wrong");
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Incorrect" message:@"The correct answer was..." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        NSString* base = @"The correct answer was...\n";
+        base = [base stringByAppendingString:[(UILabel*)self.labelCollection[self.correctAns - 1] text]];
+        NSLog(@"base %@",base);
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Incorrect" message:base delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertView show];
     }
     
@@ -65,8 +56,21 @@ int ansChoice = -1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     NSError* err = nil;
+    
+    self.catImage = nil;
+    [API getKitten:self];
+    
+//    NSRegularExpression *regex = [NSRegularExpression
+//                                  regularExpressionWithPattern:@"(&lt;).*(&gt;).*(&lt;)/.*(&gt;)" options:0 error:nil];
+    
+//    NSRegularExpression *regex2 = [NSRegularExpression
+//                                  regularExpressionWithPattern:@"&lt;.*&gt;" options:0 error:nil];
+    
+//    NSLog(@"before %@", self.questiontxt);
+//    [regex2 stringByReplacingMatchesInString:self.questiontxt options:nil range:NSMakeRange(0, [self.questiontxt length]) withTemplate:@""];
+//    self.questionlbl.text = [self.questiontxt stripHtml];
+//    NSLog(@"after  %@", self.questionlbl.text);
     
     self.questionlbl.attributedText =
         [[NSAttributedString alloc]
@@ -75,18 +79,30 @@ int ansChoice = -1;
          documentAttributes: nil
          error: &err];
     
+//    CGSize stringsize = [@"Submit" sizeWithAttributes:@{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:17.0] }];
+//    [self.submitBtn setFrame:CGRectMake(10,0,stringsize.width, stringsize.height)];
+    
     self.answer1lbl.text = self.answer1txt;
     self.answer2lbl.text = self.answer2txt;
     self.answer3lbl.text = self.answer3txt;
     self.answer4lbl.text = self.answer4txt;
-    // Do any additional setup after loading the view, typically from a nib.
-//    [self configureView];
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"showKitten"]){
+        PrizeViewController* viewController = (PrizeViewController*)segue.destinationViewController;
+        viewController.catImage = self.catImage;
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    [alertView dismissWithClickedButtonIndex:0 animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

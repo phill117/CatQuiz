@@ -12,5 +12,5 @@
 
 @interface API : NSObject
 +(void)getRandomQuestion:(MasterViewController*) viewController;
-+(void)getKitten;
++(void)getKitten:(DetailViewController*) viewController;
 @end

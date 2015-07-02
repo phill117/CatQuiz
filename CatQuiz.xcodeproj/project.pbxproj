@@ -17,6 +17,8 @@
 		963D8D331B41876000800C51 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 963D8D311B41876000800C51 /* LaunchScreen.xib */; };
 		963D8D3F1B41876000800C51 /* CatQuizTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 963D8D3E1B41876000800C51 /* CatQuizTests.m */; };
 		963D8D4A1B418A8F00800C51 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 963D8D491B418A8F00800C51 /* API.m */; };
+		964FF0461B44F26F0091F2F2 /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 964FF0451B44F26F0091F2F2 /* NSString_stripHtml.m */; };
+		964FF04C1B4500480091F2F2 /* PrizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 964FF04B1B4500480091F2F2 /* PrizeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,10 @@
 		963D8D3E1B41876000800C51 /* CatQuizTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatQuizTests.m; sourceTree = "<group>"; };
 		963D8D481B418A8F00800C51 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		963D8D491B418A8F00800C51 /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
+		964FF0441B44F2510091F2F2 /* NSString_stripHtml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSString_stripHtml.h; sourceTree = "<group>"; };
+		964FF0451B44F26F0091F2F2 /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_stripHtml.m; sourceTree = "<group>"; };
+		964FF04A1B4500480091F2F2 /* PrizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrizeViewController.h; sourceTree = "<group>"; };
+		964FF04B1B4500480091F2F2 /* PrizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrizeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,9 +126,13 @@
 				963D8D291B41876000800C51 /* DetailViewController.h */,
 				963D8D2A1B41876000800C51 /* DetailViewController.m */,
 				963D8D2C1B41876000800C51 /* Main.storyboard */,
+				964FF0441B44F2510091F2F2 /* NSString_stripHtml.h */,
+				964FF0451B44F26F0091F2F2 /* NSString_stripHtml.m */,
 				963D8D2F1B41876000800C51 /* Images.xcassets */,
 				963D8D311B41876000800C51 /* LaunchScreen.xib */,
 				963D8D1F1B41876000800C51 /* Supporting Files */,
+				964FF04A1B4500480091F2F2 /* PrizeViewController.h */,
+				964FF04B1B4500480091F2F2 /* PrizeViewController.m */,
 			);
 			path = CatQuiz;
 			sourceTree = "<group>";
@@ -291,7 +301,9 @@
 				963D8D251B41876000800C51 /* AppDelegate.m in Sources */,
 				963D8D281B41876000800C51 /* MasterViewController.m in Sources */,
 				963D8D221B41876000800C51 /* main.m in Sources */,
+				964FF0461B44F26F0091F2F2 /* NSString_stripHtml.m in Sources */,
 				963D8D2B1B41876000800C51 /* DetailViewController.m in Sources */,
+				964FF04C1B4500480091F2F2 /* PrizeViewController.m in Sources */,
 				963D8D4A1B418A8F00800C51 /* API.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

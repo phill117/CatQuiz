@@ -8,6 +8,7 @@
 
 #import "API.h"
 #import "MasterViewController.h"
+#import "DetailViewController.h"
 #import <UNIRest.h>
 
 @implementation API
@@ -37,18 +38,17 @@
         viewController.answer3text = [self trim:[dic valueForKey:@"q_options_3"]];
         viewController.answer4text = [self trim:[dic valueForKey:@"q_options_4"]];
         
-        NSLog(@"Here?1");
-        [spinner removeFromSuperview];
-        [spinner stopAnimating];
-        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-        NSLog(@"Here?2");
-        
-        [viewController performSegueWithIdentifier:@"showDetail" sender:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [spinner removeFromSuperview];
+            [spinner stopAnimating];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            [viewController performSegueWithIdentifier:@"showDetail" sender:nil];
+        });
     }];
 }
 
 
-+(void)getKitten{
++(void)getKitten:(DetailViewController*) viewController{
     
     NSDictionary *parameters = @{@"api_key": @"MjM5Mzc"};
     UNIUrlConnection *asyncConnection = [[UNIRest get:^(UNISimpleRequest *request) {
@@ -57,9 +57,10 @@
     }] asBinaryAsync:^(UNIHTTPBinaryResponse *response, NSError *error) {
         NSInteger code = response.code;
         NSData *body = response.body;
-        NSLog(@"%@",body);
-        NSLog(@"%ld",(long)code);
+//        NSLog(@"%@",body);
+//        NSLog(@"%ld",(long)code);
         UIImage* image = [UIImage imageWithData:body];
+        viewController.catImage = image;
     }];
 
     
