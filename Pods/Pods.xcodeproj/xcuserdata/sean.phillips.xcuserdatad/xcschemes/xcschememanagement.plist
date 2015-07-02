@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-MWFeedParser.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-NUI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>00D6694B42ED2C6FB3030105</key>
+		<key>11005B006FA38E01746B7457</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>227D4E2DF7EA45CE22608E6C</key>
+		<key>73690371926F935562231B6B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CA4685498829CA2462749043</key>
+		<key>9884D8DB3DBC32F1A2B4A71F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D5E832A69E9FAAC2A27FE218</key>
+		<key>AB280D8D65406C42DDDA9BC5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B140D227DFE6156C7BAB09B4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

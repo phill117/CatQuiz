@@ -7,19 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TriviaSheetProtocol.h"
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController<TriviaSheetProtocol>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
-@property (nonatomic, assign) int correctAns;
-@property (strong, nonatomic) NSString* questiontext;
-@property (strong, nonatomic) NSString* answer1text;
-@property (strong, nonatomic) NSString* answer2text;
-@property (strong, nonatomic) NSString* answer3text;
-@property (strong, nonatomic) NSString* answer4text;
+
 
 
 @end

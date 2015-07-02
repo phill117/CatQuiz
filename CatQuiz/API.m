@@ -9,11 +9,16 @@
 #import "API.h"
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "TriviaSheetProtocol.h"
 #import <UNIRest.h>
 
 @implementation API
 
-+(void)getRandomQuestion:(MasterViewController*) viewController{
++(void)getRandomQuestion:(UIViewController <TriviaSheetProtocol>*) viewController{
+    [self getRandomQuestion:viewController alertView:nil];
+}
+
++(void)getRandomQuestion:(UIViewController <TriviaSheetProtocol>*) viewController alertView:(UIAlertView*)alertView{
     
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     spinner.color = [UIColor blueColor];
@@ -23,7 +28,7 @@
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
     NSDictionary *headers = @{@"X-Mashape-Key": @"r4jP7hJ4p2mshjCkXqNoAXxcAENvp1Nz85Tjsn9XrqzjJlrUCH", @"size": @"small"};
-    UNIUrlConnection *asyncConnection = [[UNIRest get:^(UNISimpleRequest *request) {
+    [[UNIRest get:^(UNISimpleRequest *request) {
         [request setUrl:@"https://pareshchouhan-trivia-v1.p.mashape.com/v1/getRandomQuestion"];
         [request setHeaders:headers];
     }] asJsonAsync:^(UNIHTTPJsonResponse *response, NSError *error) {
@@ -38,12 +43,23 @@
         viewController.answer3text = [self trim:[dic valueForKey:@"q_options_3"]];
         viewController.answer4text = [self trim:[dic valueForKey:@"q_options_4"]];
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [spinner removeFromSuperview];
-            [spinner stopAnimating];
-            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-            [viewController performSegueWithIdentifier:@"showDetail" sender:nil];
-        });
+        if([viewController isMemberOfClass: [MasterViewController class]]){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [spinner removeFromSuperview];
+                [spinner stopAnimating];
+                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+                [viewController performSegueWithIdentifier:@"showDetail" sender:nil];
+            });
+        }else{
+            if (alertView != nil) {while ([alertView isVisible]) {}} //wait for the alertview to go away
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [viewController viewDidLoad];
+                [spinner removeFromSuperview];
+                [spinner stopAnimating];
+                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+                
+            });
+        }
     }];
 }
 
@@ -51,14 +67,11 @@
 +(void)getKitten:(DetailViewController*) viewController{
     
     NSDictionary *parameters = @{@"api_key": @"MjM5Mzc"};
-    UNIUrlConnection *asyncConnection = [[UNIRest get:^(UNISimpleRequest *request) {
+    [[UNIRest get:^(UNISimpleRequest *request) {
         [request setUrl:@"http://thecatapi.com/api/images/get"];
         [request setParameters: parameters];
     }] asBinaryAsync:^(UNIHTTPBinaryResponse *response, NSError *error) {
-        NSInteger code = response.code;
         NSData *body = response.body;
-//        NSLog(@"%@",body);
-//        NSLog(@"%ld",(long)code);
         UIImage* image = [UIImage imageWithData:body];
         viewController.catImage = image;
     }];

@@ -17,6 +17,13 @@
 
 @implementation MasterViewController
 
+@synthesize correctAns;
+@synthesize questiontext;
+@synthesize answer1text;
+@synthesize answer2text;
+@synthesize answer3text;
+@synthesize answer4text;
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
@@ -63,16 +70,14 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
         DetailViewController *controller = (DetailViewController *)[segue destinationViewController];
         
         controller.correctAns = self.correctAns;
-        controller.answer1txt = self.answer1text;
-        controller.answer2txt = self.answer2text;
-        controller.answer3txt = self.answer3text;
-        controller.answer4txt = self.answer4text;
-        controller.questiontxt = self.questiontext;
+        controller.answer1text = self.answer1text;
+        controller.answer2text = self.answer2text;
+        controller.answer3text = self.answer3text;
+        controller.answer4text = self.answer4text;
+        controller.questiontext = self.questiontext;
         
         NSLog(@"nc %@",self.navigationController);
     }

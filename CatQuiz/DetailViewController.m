@@ -10,12 +10,20 @@
 #import "NSString_stripHtml.h"
 #import "PrizeViewController.h"
 #import "API.h"
+#import "NSString+HTML.h"
 
 @interface DetailViewController ()
 
 @end
 
 @implementation DetailViewController
+
+@synthesize correctAns;
+@synthesize questiontext;
+@synthesize answer1text;
+@synthesize answer2text;
+@synthesize answer3text;
+@synthesize answer4text;
 
 int ansChoice = -1;
 
@@ -38,7 +46,7 @@ int ansChoice = -1;
 - (IBAction)submitAnswer:(id)sender {
     if(ansChoice == self.correctAns){
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-            while(self.catImage == nil){}; // wait
+            //while(self.catImage == nil){}; // wait
             dispatch_async(dispatch_get_main_queue(), ^(void){
                 [self performSegueWithIdentifier:@"showKitten" sender:nil];
             });
@@ -48,7 +56,7 @@ int ansChoice = -1;
         NSString* base = @"The correct answer was...\n";
         base = [base stringByAppendingString:[(UILabel*)self.labelCollection[self.correctAns - 1] text]];
         NSLog(@"base %@",base);
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Incorrect" message:base delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Incorrect" message:base delegate:self cancelButtonTitle:@"Quit" otherButtonTitles:@"Try Another", nil];
         [alertView show];
     }
     
@@ -72,20 +80,22 @@ int ansChoice = -1;
 //    self.questionlbl.text = [self.questiontxt stripHtml];
 //    NSLog(@"after  %@", self.questionlbl.text);
     
-    self.questionlbl.attributedText =
-        [[NSAttributedString alloc]
-         initWithData: [self.questiontxt dataUsingEncoding:NSUTF8StringEncoding]
-         options: @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType }
-         documentAttributes: nil
-         error: &err];
+    [self createWebViewWithHTML];
+    
+//    self.questionlbl.attributedText =
+//        [[NSAttributedString alloc]
+//         initWithData: [self.questiontxt dataUsingEncoding:NSUTF8StringEncoding]
+//         options: @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType }
+//         documentAttributes: nil
+//         error: &err];
     
 //    CGSize stringsize = [@"Submit" sizeWithAttributes:@{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:17.0] }];
 //    [self.submitBtn setFrame:CGRectMake(10,0,stringsize.width, stringsize.height)];
     
-    self.answer1lbl.text = self.answer1txt;
-    self.answer2lbl.text = self.answer2txt;
-    self.answer3lbl.text = self.answer3txt;
-    self.answer4lbl.text = self.answer4txt;
+    self.answer1lbl.text = self.answer1text;
+    self.answer2lbl.text = self.answer2text;
+    self.answer3lbl.text = self.answer3text;
+    self.answer4lbl.text = self.answer4text;
     
 }
 
@@ -101,8 +111,37 @@ int ansChoice = -1;
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    [alertView dismissWithClickedButtonIndex:0 animated:YES];
-    [self.navigationController popViewControllerAnimated:YES];
+    if(buttonIndex == 0){
+        [alertView dismissWithClickedButtonIndex:0 animated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [alertView dismissWithClickedButtonIndex:0 animated:YES];
+        //while ([alertView isVisible]) {}
+        [API getRandomQuestion:self alertView:alertView];
+    }
+}
+
+- (void) createWebViewWithHTML{
+    //create the string
+    NSMutableString *html = [NSMutableString stringWithString: @"<html><head><title></title></head><body style=\"background:transparent;\">"];
+    
+    //continue building the string
+    NSString* unescaped = [self.questiontext stringByDecodingHTMLEntities];
+    [html appendString:unescaped];
+    [html appendString:@"</body></html>"];
+    
+    //instantiate the web view
+    //UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.frame];
+    
+    //make the background transparent
+    //[self.questionWebView setBackgroundColor:[UIColor clearColor]];
+    
+    //pass the string to the webview
+    [self.questionWebView loadHTMLString:[html description] baseURL:nil];
+    
+    //add it to the subview
+    //[self.view addSubview:webView];
+    
 }
 
 @end

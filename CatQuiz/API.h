@@ -11,6 +11,7 @@
 #import "MasterViewController.h"
 
 @interface API : NSObject
-+(void)getRandomQuestion:(MasterViewController*) viewController;
++(void)getRandomQuestion:(UIViewController <TriviaSheetProtocol>*) viewController;
++(void)getRandomQuestion:(UIViewController <TriviaSheetProtocol>*) viewController alertView:(UIAlertView*)alertView;
 +(void)getKitten:(DetailViewController*) viewController;
 @end

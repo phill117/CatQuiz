@@ -56,6 +56,7 @@
 		964FF0451B44F26F0091F2F2 /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_stripHtml.m; sourceTree = "<group>"; };
 		964FF04A1B4500480091F2F2 /* PrizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrizeViewController.h; sourceTree = "<group>"; };
 		964FF04B1B4500480091F2F2 /* PrizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrizeViewController.m; sourceTree = "<group>"; };
+		96E183841B45E2C000B135FB /* TriviaSheetProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TriviaSheetProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +134,7 @@
 				963D8D1F1B41876000800C51 /* Supporting Files */,
 				964FF04A1B4500480091F2F2 /* PrizeViewController.h */,
 				964FF04B1B4500480091F2F2 /* PrizeViewController.m */,
+				96E183841B45E2C000B135FB /* TriviaSheetProtocol.h */,
 			);
 			path = CatQuiz;
 			sourceTree = "<group>";

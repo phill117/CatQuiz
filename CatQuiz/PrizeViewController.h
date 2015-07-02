@@ -11,7 +11,6 @@
 @interface PrizeViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIImageView *catView;
-
 @property (strong, nonatomic) UIImage* catImage;
 
 @end
