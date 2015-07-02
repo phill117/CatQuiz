@@ -7,7 +7,6 @@
 //
 
 #import "DetailViewController.h"
-#import "NSString_stripHtml.h"
 #import "PrizeViewController.h"
 #import "API.h"
 #import "NSString+HTML.h"
@@ -69,28 +68,7 @@ int ansChoice = -1;
     self.catImage = nil;
     [API getKitten:self];
     
-//    NSRegularExpression *regex = [NSRegularExpression
-//                                  regularExpressionWithPattern:@"(&lt;).*(&gt;).*(&lt;)/.*(&gt;)" options:0 error:nil];
-    
-//    NSRegularExpression *regex2 = [NSRegularExpression
-//                                  regularExpressionWithPattern:@"&lt;.*&gt;" options:0 error:nil];
-    
-//    NSLog(@"before %@", self.questiontxt);
-//    [regex2 stringByReplacingMatchesInString:self.questiontxt options:nil range:NSMakeRange(0, [self.questiontxt length]) withTemplate:@""];
-//    self.questionlbl.text = [self.questiontxt stripHtml];
-//    NSLog(@"after  %@", self.questionlbl.text);
-    
     [self createWebViewWithHTML];
-    
-//    self.questionlbl.attributedText =
-//        [[NSAttributedString alloc]
-//         initWithData: [self.questiontxt dataUsingEncoding:NSUTF8StringEncoding]
-//         options: @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType }
-//         documentAttributes: nil
-//         error: &err];
-    
-//    CGSize stringsize = [@"Submit" sizeWithAttributes:@{ NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:17.0] }];
-//    [self.submitBtn setFrame:CGRectMake(10,0,stringsize.width, stringsize.height)];
     
     self.answer1lbl.text = self.answer1text;
     self.answer2lbl.text = self.answer2text;
@@ -138,9 +116,6 @@ int ansChoice = -1;
     
     //pass the string to the webview
     [self.questionWebView loadHTMLString:[html description] baseURL:nil];
-    
-    //add it to the subview
-    //[self.view addSubview:webView];
     
 }
 
