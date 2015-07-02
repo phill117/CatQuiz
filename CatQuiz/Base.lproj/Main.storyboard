@@ -170,7 +170,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BDy-sO-gRv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BDy-sO-gRv">
                                 <rect key="frame" x="61" y="58" width="478" height="467"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAx-KL-VDT">
@@ -201,8 +201,12 @@
                         <constraints>
                             <constraint firstItem="DAx-KL-VDT" firstAttribute="top" secondItem="2pQ-hF-e8f" secondAttribute="bottom" id="3eO-rP-vR1"/>
                             <constraint firstAttribute="centerX" secondItem="LDV-FP-TwX" secondAttribute="centerX" constant="-0.5" id="GDt-Uc-4kW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BDy-sO-gRv" secondAttribute="trailing" constant="45" id="Gw4-BH-iXv"/>
                             <constraint firstAttribute="centerX" secondItem="DAx-KL-VDT" secondAttribute="centerX" id="dew-7O-ka4"/>
                             <constraint firstItem="jq4-sZ-Yi4" firstAttribute="top" secondItem="LDV-FP-TwX" secondAttribute="bottom" constant="21" id="fu3-Q9-zz3"/>
+                            <constraint firstItem="BDy-sO-gRv" firstAttribute="top" secondItem="DAx-KL-VDT" secondAttribute="bottom" constant="8" id="gBf-yM-EWV"/>
+                            <constraint firstItem="BDy-sO-gRv" firstAttribute="leading" secondItem="RE8-vK-6ke" secondAttribute="leadingMargin" constant="45" id="jmb-rf-h6U"/>
+                            <constraint firstItem="LDV-FP-TwX" firstAttribute="top" secondItem="BDy-sO-gRv" secondAttribute="bottom" constant="8" id="ofs-Bu-Fte"/>
                         </constraints>
                     </view>
                     <connections>
