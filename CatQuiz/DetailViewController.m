@@ -63,7 +63,6 @@ int ansChoice = -1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSError* err = nil;
     
     self.catImage = nil;
     [API getKitten:self];

@@ -17,6 +17,8 @@
 		963D8D331B41876000800C51 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 963D8D311B41876000800C51 /* LaunchScreen.xib */; };
 		963D8D3F1B41876000800C51 /* CatQuizTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 963D8D3E1B41876000800C51 /* CatQuizTests.m */; };
 		963D8D4A1B418A8F00800C51 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 963D8D491B418A8F00800C51 /* API.m */; };
+		963F95761B487BDF0010533C /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 963F95751B487BDF0010533C /* SplashViewController.m */; };
+		963F95781B49B13C0010533C /* smartCat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 963F95771B49B13C0010533C /* smartCat.jpg */; };
 		964FF04C1B4500480091F2F2 /* PrizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 964FF04B1B4500480091F2F2 /* PrizeViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,9 @@
 		963D8D3E1B41876000800C51 /* CatQuizTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatQuizTests.m; sourceTree = "<group>"; };
 		963D8D481B418A8F00800C51 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		963D8D491B418A8F00800C51 /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
+		963F95741B487BDF0010533C /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		963F95751B487BDF0010533C /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		963F95771B49B13C0010533C /* smartCat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smartCat.jpg; sourceTree = "<group>"; };
 		964FF04A1B4500480091F2F2 /* PrizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrizeViewController.h; sourceTree = "<group>"; };
 		964FF04B1B4500480091F2F2 /* PrizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrizeViewController.m; sourceTree = "<group>"; };
 		96E183841B45E2C000B135FB /* TriviaSheetProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TriviaSheetProtocol.h; sourceTree = "<group>"; };
@@ -130,6 +135,8 @@
 				964FF04A1B4500480091F2F2 /* PrizeViewController.h */,
 				964FF04B1B4500480091F2F2 /* PrizeViewController.m */,
 				96E183841B45E2C000B135FB /* TriviaSheetProtocol.h */,
+				963F95741B487BDF0010533C /* SplashViewController.h */,
+				963F95751B487BDF0010533C /* SplashViewController.m */,
 			);
 			path = CatQuiz;
 			sourceTree = "<group>";
@@ -137,6 +144,7 @@
 		963D8D1F1B41876000800C51 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				963F95771B49B13C0010533C /* smartCat.jpg */,
 				963D8D201B41876000800C51 /* Info.plist */,
 				963D8D211B41876000800C51 /* main.m */,
 			);
@@ -211,6 +219,7 @@
 				TargetAttributes = {
 					963D8D1B1B41876000800C51 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = J2VAKEVY6P;
 					};
 					963D8D371B41876000800C51 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -244,6 +253,7 @@
 			files = (
 				963D8D2E1B41876000800C51 /* Main.storyboard in Resources */,
 				963D8D331B41876000800C51 /* LaunchScreen.xib in Resources */,
+				963F95781B49B13C0010533C /* smartCat.jpg in Resources */,
 				963D8D301B41876000800C51 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				963D8D251B41876000800C51 /* AppDelegate.m in Sources */,
+				963F95761B487BDF0010533C /* SplashViewController.m in Sources */,
 				963D8D281B41876000800C51 /* MasterViewController.m in Sources */,
 				963D8D221B41876000800C51 /* main.m in Sources */,
 				963D8D2B1B41876000800C51 /* DetailViewController.m in Sources */,
@@ -429,9 +440,12 @@
 			baseConfigurationReference = 27C5BA7B15D7530A6E57A2E0 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CatQuiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -440,9 +454,12 @@
 			baseConfigurationReference = 532B9996F96FDEDF6FA6C6B1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CatQuiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

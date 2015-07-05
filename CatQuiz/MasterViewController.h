@@ -11,12 +11,11 @@
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController<TriviaSheetProtocol>
+@interface MasterViewController : UIViewController<TriviaSheetProtocol,UITableViewDataSource,UITableViewDelegate>
 
-@property (strong, nonatomic) DetailViewController *detailViewController;
-
-
-
+@property (strong, nonatomic) NSArray* categories;
+@property (strong, nonatomic) IBOutlet UIView *imageOverlay;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 

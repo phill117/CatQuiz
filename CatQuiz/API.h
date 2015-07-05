@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "SplashViewcontroller.h"
 #import "MasterViewController.h"
+
 
 @interface API : NSObject
 +(void)getRandomQuestion:(UIViewController <TriviaSheetProtocol>*) viewController;
 +(void)getRandomQuestion:(UIViewController <TriviaSheetProtocol>*) viewController alertView:(UIAlertView*)alertView;
 +(void)getKitten:(DetailViewController*) viewController;
++(void)getCategories:(MasterViewController*) viewControlller;
 @end
