@@ -10,7 +10,6 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "TriviaSheetProtocol.h"
-#import "SplashViewController.h"
 #import <UNIRest.h>
 
 @implementation API
